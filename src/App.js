@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Album from './pages/Album';
@@ -9,10 +10,33 @@ import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 
 class App extends React.Component {
+  state = {
+    isLogado: false,
+  };
+
+  alteraLogado = () => {
+    this.setState({
+      isLogado: true,
+    });
+  };
+
   render() {
+    const { isLogado } = this.state;
     return (
       <Switch>
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/">
+          {isLogado ? <Redirect to="/search" /> : (
+            <Route
+              exact
+              path="/"
+              render={ (props) => (
+                <Login
+                  { ...props }
+                  alteraLogado={ this.alteraLogado }
+                />) }
+            />
+          )}
+        </Route>
         <Route exact path="/search" component={ Search } />
         <Route exact path="/album/:id" component={ Album } />
         <Route exact path="/favorites" component={ Favorites } />
@@ -23,5 +47,9 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = ({
+  alteraLogado: PropTypes.any,
+}).isRequired;
 
 export default App;
