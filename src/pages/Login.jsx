@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import { Loading } from '../components/Loading';
 
-export default class login extends Component {
+class login extends Component {
   state = {
     nome: '',
     disabled: true,
@@ -74,3 +74,5 @@ export default class login extends Component {
 login.propTypes = {
   alteraLogado: PropTypes.func,
 }.isRequired;
+
+export default login;
