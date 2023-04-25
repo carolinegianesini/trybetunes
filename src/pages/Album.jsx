@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { Loading } from '../components/Loading';
 
 class Album extends Component {
   state = {
     musics: [],
     album: {},
+    loading: false,
   };
 
   componentDidMount() {
@@ -24,18 +26,25 @@ class Album extends Component {
   };
 
   render() {
-    const { musics, album } = this.state;
+    const { musics, album, loading } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
         <img src={ album.artworkUrl100 } alt={ album.collectionName } />
         <p data-testid="album-name">{ album.collectionName }</p>
         <p data-testid="artist-name">{ album.artistName }</p>
-        <MusicCard
-          musicList={ musics }
-          // trackName={ musics.trackName }
-          // previewUrl={ musics.previewUrl }
-        />
+
+        { loading
+          ? <Loading />
+          : (musics.map((music) => (
+            <section key={ music.previewUrl }>
+              <MusicCard
+                trackId={ music.trackId }
+                previewUrl={ music.previewUrl }
+                trackName={ music.trackName }
+              />
+            </section>
+          )))}
       </div>
     );
   }
