@@ -77,11 +77,10 @@ class Search extends Component {
                 Pesquisar
               </button>
             </form>)}
-        { artistResults && <p>{`Resultado de álbuns de: ${artistResults}`}</p>}
+        {artistResults && <p>{`Resultado de álbuns de: ${artistResults}`}</p>}
         <section>
-          {apiReturn && artistAlbums.length === 0
-            ? <p>Nenhum álbum foi encontrado</p>
-            : (artistAlbums.map((album) => (
+          {apiReturn && artistAlbums.length > 0
+            ? (artistAlbums.map((album) => (
               <div key={ album.collectionId }>
                 <img src={ album.artworkUrl100 } alt={ album.collectionName } />
                 <p>{ album.collectionName }</p>
@@ -93,7 +92,8 @@ class Search extends Component {
                   Acessar álbum
                 </Link>
               </div>
-            )))}
+            )))
+            : <p>Nenhum álbum foi encontrado</p>}
         </section>
       </div>
     );
