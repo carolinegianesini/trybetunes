@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
-import MusicCard from '../components/MusicCard';
 import { Loading } from '../components/Loading';
+import MusicCard from '../components/MusicCard';
 
 class Album extends Component {
   state = {
@@ -24,6 +24,17 @@ class Album extends Component {
       album: musicslist[0],
     });
   };
+
+  // getFavoriteMusics = async () => {
+  //   this.setState({
+  //     loading: true,
+  //   });
+  //   const favMusics = await getFavoriteSongs();
+  //   this.setState({
+  //     loading: false,
+  //     favMusics,
+  //   });
+  // };
 
   render() {
     const { musics, album, loading } = this.state;
