@@ -11,10 +11,8 @@ class MusicCard extends Component {
 
   async componentDidMount() {
     const allMusics = await getFavoriteSongs();
-    // console.log(allMusics);
     const { trackId } = this.props;
     const favoriteMusic = allMusics.some((music) => music.trackId === trackId);
-    // console.log(favoriteMusic);
     if (favoriteMusic) {
       this.setState({
         checked: true,
@@ -23,21 +21,20 @@ class MusicCard extends Component {
   }
 
   addMusicFunc = async () => {
-    const { trackId } = this.props;
+    const { trackId, trackName, previewUrl, funcaoTeste } = this.props;
     const { checked } = this.state;
     this.setState({
       loading: true,
     });
     if (checked === false) {
-      await addSong(trackId);
-      // console.log(trackId);
+      await addSong({ trackId, trackName, previewUrl });
       this.setState({
         loading: false,
         checked: true,
       });
     } else {
-      await removeSong(trackId);
-      // console.log(trackId);
+      await removeSong({ trackId, trackName, previewUrl });
+      await funcaoTeste();
       this.setState({
         loading: false,
         checked: false,
@@ -46,7 +43,6 @@ class MusicCard extends Component {
   };
 
   render() {
-    // const { musicList } = this.props;
     const { trackId, previewUrl, trackName } = this.props;
     const { checked, loading } = this.state;
     return (
@@ -55,7 +51,7 @@ class MusicCard extends Component {
           ? <Loading />
           : (
             <div>
-              <h3>{trackName}</h3>
+              <p>{trackName}</p>
               <audio data-testid="audio-component" src={ previewUrl } controls>
                 <track kind="captions" />
                 O seu navegador não suporta o elemento
@@ -69,14 +65,14 @@ class MusicCard extends Component {
                   data-testid={ `checkbox-music-${trackId}` }
                 >
                   Favorita
+                  <input
+                    type="checkbox"
+                    name={ previewUrl }
+                    id={ trackId }
+                    onChange={ this.addMusicFunc }
+                    checked={ checked }
+                  />
                 </label>
-                <input
-                  type="checkbox"
-                  name={ previewUrl }
-                  id={ trackId }
-                  onChange={ this.addMusicFunc }
-                  checked={ checked }
-                />
               </form>
             </div>
           )}

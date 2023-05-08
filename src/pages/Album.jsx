@@ -25,17 +25,6 @@ class Album extends Component {
     });
   };
 
-  // getFavoriteMusics = async () => {
-  //   this.setState({
-  //     loading: true,
-  //   });
-  //   const favMusics = await getFavoriteSongs();
-  //   this.setState({
-  //     loading: false,
-  //     favMusics,
-  //   });
-  // };
-
   render() {
     const { musics, album, loading } = this.state;
     return (
@@ -53,6 +42,7 @@ class Album extends Component {
                 trackId={ music.trackId }
                 previewUrl={ music.previewUrl }
                 trackName={ music.trackName }
+                funcaoTeste={ () => {} }
               />
             </section>
           )))}
