@@ -42,11 +42,11 @@ class login extends Component {
   render() {
     const { nome, disabled, loading } = this.state;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login-page">
         {loading ? <Loading />
           : (
-            <form>
-              <label htmlFor="nome">
+            <form className="login-form">
+              <label htmlFor="nome" className="login-label">
                 Digite seu nome:
                 <input
                   type="text"
@@ -55,6 +55,7 @@ class login extends Component {
                   value={ nome }
                   data-testid="login-name-input"
                   onChange={ this.handleChange }
+                  className="login-input"
                 />
               </label>
               <button
@@ -62,6 +63,7 @@ class login extends Component {
                 disabled={ disabled }
                 data-testid="login-submit-button"
                 onClick={ () => this.enterButton(nome) }
+                className="login-button"
               >
                 Entrar
               </button>

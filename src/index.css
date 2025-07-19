@@ -17,3 +17,100 @@ code {
   display: flex;
   justify-content: center;
 }
+
+/* Estilos para a página de login */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff69b4 0%, #ffb6c1 50%, #ffc0cb 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Borboletas decorativas */
+.login-page::before,
+.login-page::after {
+  content: '🦋';
+  position: absolute;
+  font-size: 2rem;
+  animation: flutter 3s ease-in-out infinite;
+}
+
+.login-page::before {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.login-page::after {
+  top: 30%;
+  right: 20%;
+  animation-delay: 1.5s;
+}
+
+@keyframes flutter {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(5deg); }
+  50% { transform: translateY(-5px) rotate(-5deg); }
+  75% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.login-form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 320px;
+  border: 2px solid rgba(255, 182, 193, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.login-label {
+  font-size: 1.1rem;
+  color: #d63384;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.login-input {
+  padding: 0.7rem 1rem;
+  border: 2px solid #ffb6c1;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0.9);
+}
+.login-input:focus {
+  border: 2px solid #ff69b4;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+}
+
+.login-button {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(90deg, #ff69b4 0%, #ff1493 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+}
+.login-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
