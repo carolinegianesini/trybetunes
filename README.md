@@ -4,8 +4,6 @@ Bem-vindo ao **TrybeTunes**! Este é um projeto desenvolvido durante o curso da 
 
 ## 🚀 Demonstração
 
-> Adicione aqui prints da aplicação ou um GIF demonstrando as principais funcionalidades.
-
 ## ✨ Funcionalidades
 
 - Login com validação de nome
@@ -68,9 +66,9 @@ trybetunes/
 ## 📞 Contato
 
 Fique à vontade para entrar em contato:
-- [Caroline Plexa Gianesini]
-- [https://www.linkedin.com/in/caroline-gianesini/]
-- [caroline.gianesini@gmail.com]
+- Caroline Plexa Gianesini
+- https://www.linkedin.com/in/caroline-gianesini/
+- caroline.gianesini@gmail.com
 
 ---
 
